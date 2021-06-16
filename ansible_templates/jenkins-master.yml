@@ -1,0 +1,16 @@
+#Ansible Jenkins Master - playbook
+---
+- hosts: jenkins-master
+  become: yes
+  become_user: root
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start and Enable Apache
+      service:
+        name: httpd
+        state: started
+        enabled: yes
